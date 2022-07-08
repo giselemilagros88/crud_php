@@ -1,0 +1,12 @@
+mysql://b2dfee26219027:6d7377de@us-cdbr-east-06.cleardb.net/heroku_5dc9c85290fdc82?reconnect=true
+
+
+mysql://
+b2dfee26219027 usuario 
+:
+6d7377de  contraseña 
+@
+us-cdbr-east-06.cleardb.net  servidor 
+/
+heroku_5dc9c85290fdc82 base de datos
+?reconnect=true

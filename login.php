@@ -4,6 +4,14 @@
     session_start();
     #validar datos
     if ($_POST){
+      #conexion a la base
+      #mail
+      #contraseña
+      #es_admin s o n 
+      /*
+      select es_admin
+      from usuarios where
+      mail="" and contraseña = "";*/
         if( ($_POST['email']=="administrador@gmail.com") && ($_POST['pass']=='987g.!543FF') ){
           $_SESSION['usuario']="Admin";
           $_SESSION['logueado']='S';
@@ -57,14 +65,6 @@
                         <label for="exampleInputPassword1" class="form-label">Password</label>
                         <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
                         
-                        <!--
-                        <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Echa un Vistazo</label>
-                        </div>
-
-
-                        -->
                         <br>
                         <button type="submit" class="btn btn-primary">Entrar al Portfolio</button>
                         
