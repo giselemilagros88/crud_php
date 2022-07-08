@@ -38,7 +38,7 @@
         </style>
    </head>
    <body>
-   <canvas style="position: absolute;left:0;z-index: -1;" id="canvas" width="1366" height="2100"></canvas>
+   <canvas style="position: absolute;top:0;left:0;z-index: -1;" id="canvas" width="1300" height="2100"></canvas>
    
    <div class="container">
        

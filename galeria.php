@@ -30,21 +30,30 @@
  if($_GET){
 
     #ademas de borrar de la base , tenemos que borrar la foto de la carpeta imagenes
+   if(isset($_GET['borrar'])){
+        $id = $_GET['borrar'];
+        $conexion = new conexion();
 
-    $id = $_GET['borrar'];
-    $conexion = new conexion();
+        #recuperamos la imagen de la base antes de borrar 
+        $imagen = $conexion->consultar("select imagen FROM  `proyectos` where id=".$id);
+        #la borramos de la carpeta 
+        unlink("imagenes/".$imagen[0]['imagen']);
 
-    #recuperamos la imagen de la base antes de borrar 
-    $imagen = $conexion->consultar("select imagen FROM  `proyectos` where id=".$id);
-    #la borramos de la carpeta 
-    unlink("imagenes/".$imagen[0]['imagen']);
+        #borramos el registro de la base 
+        $sql ="DELETE FROM `proyectos` WHERE `proyectos`.`id` =".$id; 
+        $id_proyecto = $conexion->ejecutar($sql);
 
-    #borramos el registro de la base 
-    $sql ="DELETE FROM `proyectos` WHERE `proyectos`.`id` =".$id; 
-    $id_proyecto = $conexion->ejecutar($sql);
+        #para que no intente borrar muchas veces
+         header("location:galeria.php");
+   }
 
-     #para que no intente borrar muchas veces
-    # header("location:galeria.php");
+   if(isset($_GET['modificar'])){
+        $id = $_GET['modificar'];
+      
+        #pagina de modificacion por id
+        header("location:modificar.php?modificar=".$id);
+    }
+   
     
  }
  #vamos a consultar para llenar la tabla 
@@ -57,9 +66,9 @@
    <br>
 <!--ya tenemos un container en el header que cierra en el footer-->
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
+    <div class="row d-flex justify-content-center mb-5">
+        <div class="col-md-10 col-sm-12">
+            <div class="color card">
                 <div class="card-header">
                     Datos del Proyecto
                 </div>
@@ -91,41 +100,39 @@
             </div><!--cierra el card-->
             
         </div><!--cierra el col-->
-        <div class="col-md-6">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Imagen</th>
-                        <th>Descripcion</th>
-                        <th>Eliminar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php #leemos proyectos 1 por 1
-                    foreach($proyectos as $proyecto){ ?>
-                   
-                    <tr>
-                        <td scope="row"><?php echo $proyecto['id'];?></td>
-                        <td><?php echo $proyecto['nombre'];?></td>
-                        <td> <img width="100" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">  </td>
-                        <td><?php echo $proyecto['descripcion'];?></td>
-                        <td><a name="eliminar" id="eliminar" class="btn btn-danger" href="?borrar=<?php echo $proyecto['id'];?>">Eliminar</a></td>
-                    </tr>
-
-                    <?php #cerramos la llave del foreach
-                    } ?>
-                </tbody>
-            </table>
-        </div><!--cierra el col-->  
-        
     </div><!--cierra el row-->
+    <div class="tabla">
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-md-10 col-sm-6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Imagen</th>
+                            <th>Descripcion</th>
+                            <th>Eliminar</th>
+                            <th>Modificar</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        <?php #leemos proyectos 1 por 1
+                        foreach($proyectos as $proyecto){ ?>
+                    
+                        <tr >
+                            <!--<td scope="row"><?php #echo $proyecto['id'];?></td> -->
+                            <td><?php echo $proyecto['nombre'];?></td>
+                            <td> <img width="100" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">  </td>
+                            <td class="texto"><?php echo $proyecto['descripcion'];?></td>
+                            <td><a name="eliminar" id="eliminar" class="btn btn-danger" href="?borrar=<?php echo $proyecto['id'];?>">Eliminar</a></td>
+                            <td><a name="modificar" id="modificar" class="btn btn-warning" href="?modificar=<?php echo $proyecto['id'];?>">Modificar</a></td>
+                        </tr>
 
-    
-  
-
-
-
-
+                        <?php #cerramos la llave del foreach
+                        } ?>
+                    </tbody>
+                </table>
+            </div><!--cierra el col-->  
+        </div>
+    </div>
+   
 <?php include 'footer.php'; ?>

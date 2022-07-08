@@ -1,0 +1,15 @@
+.tabla{
+   background-color: rgb(103, 103, 103)!important;
+}
+
+
+@media screen and (max-width: 800px) {
+ 
+  .tabla{
+    width: 80%!important;
+    font-size: 0.8em!important;
+    background-color: #fcbbff!important;
+  }
+}
+    
+  
