@@ -2,14 +2,14 @@
 
 class conexion{
     #atributos que son propios del objeto
-    private $servidor ="us-cdbr-east-06.cleardb.net";
-    private $usuario ="b2dfee26219027";
-    private $pass = "6d7377de";
+    private $servidor ="localhost";
+    private $usuario ="root";
+    private $pass = "";
     private $conexion;#objeto de tipo pdo, de la clase propia de php
    
     public function __construct(){
         try{
-            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=heroku_5dc9c85290fdc82",$this->usuario,$this->pass);
+            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=proyecto",$this->usuario,$this->pass);
             #ACTIVAMOS LOS ERRORES Y LAS EXCEPTIONES
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
