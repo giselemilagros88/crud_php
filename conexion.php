@@ -8,10 +8,11 @@ class conexion{
     private $conexion;#objeto de tipo pdo, de la clase propia de php
    
     public function __construct(){
+        #condicional de errores, manejo de excepciones
         try{
             $this->conexion = new PDO("mysql:host=$this->servidor;dbname=heroku_5dc9c85290fdc82",$this->usuario,$this->pass);
-            #ACTIVAMOS LOS ERRORES Y LAS EXCEPTIONES
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            #ACTIVAMOS LOS ERRORES Y LAS EXCEPTIONs
+            $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION); #accedemos a un metodo de la clase pdo, que nos permite activar los errores y las excepciones(:: constante estatica)
 
         }catch(PDOException $e){
             return "Falla de Conexión".$e;
