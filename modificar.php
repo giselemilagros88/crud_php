@@ -1,7 +1,5 @@
 <?php include 'header.php'; ?>
-<?php 
-
-include 'conexion.php'; 
+<?php include 'conexion.php'; 
 if($_GET){
     if(isset($_GET['modificar'])){
         $id = $_GET['modificar'];
@@ -13,9 +11,14 @@ if($_GET){
      
     }
 }
-
-
 if($_POST){
+    $id = $_SESSION['id_proyecto'];
+    #debemos recuperar la imagen actual y borrarla del servidor para lugar pisar con la nueva imagen en el server y en la base de datos
+    #recuperamos la imagen de la base antes de borrar 
+    $imagen = $conexion->consultar("select imagen FROM  `proyectos` where id=".$id);
+    #la borramos de la carpeta 
+    unlink("imagenes/".$imagen[0]['imagen']);
+    #levantamos los datos del formulario
     $nombre_proyecto = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
     #nombre de la imagen
@@ -26,26 +29,20 @@ if($_POST){
     $fecha = new DateTime();
     $imagen= $fecha->getTimestamp()."_".$imagen;
     move_uploaded_file($imagen_temporal,"imagenes/".$imagen);
-   
-    $id = $_SESSION['id_proyecto'];
     #creo una instancia(objeto) de la clase de conexion
     $conexion = new conexion();
-    $sql="INSERT INTO `proyectos` (`id`, `nombre`, `imagen`, `descripcion`) VALUES (NULL, '$nombre_proyecto' , '$imagen', '$descripcion')";
     $sql = "UPDATE `proyectos` SET `nombre` = '$nombre_proyecto' , `imagen` = '$imagen', `descripcion` = '$descripcion' WHERE `proyectos`.`id` = '$id';";
     $id_proyecto = $conexion->ejecutar($sql);
 
     header("location:galeria.php");
-
+    die();
 }
- 
-
-
 ?>
 <?php #leemos proyectos 1 por 1
   foreach($proyecto as $fila){ ?>
-    <div class="row d-flex justify-content-center mb-5">
+    <div class="row d-flex justify-content-center mt-4 mb-5">
             <div class="col-md-10 col-sm-12">
-                <div class="color card">
+                <div class="card" style="background-color:#CDB3A6;">
                     <div class="card-header">
                         Datos del Proyecto
                     </div>
@@ -58,8 +55,15 @@ if($_POST){
                             </div>
                         
                             <div>
-                                <label for="archivo">Imagen del Proyecto</label>
-                                <input required class="form-control" type="file" name ="archivo" id="archivo" >
+                                <div class="d-flex flex-column justify-content-center align-items-center">
+                                    <label for="archivo">Imagen del Proyecto - Se actualizara al grabar los cambios</label>
+                                    <br>
+                                    <div class="d-flex justify-content-center align-item-center">
+                                        <img src="imagenes/<?php echo $fila['imagen']; ?>" width="400">
+                                    </div>
+                                </div>
+                                <p>Seleccione un nueva Imagen si desea modificar</p>
+                                <input class="form-control" type="file" name ="archivo" id="archivo" value="<?php echo $fila['imagen'];?>">
                             </div>
                             <br>
                             <div>

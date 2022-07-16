@@ -1,11 +1,6 @@
 <?php include 'header.php'; ?>
 <?php include 'conexion.php'; ?>
-
-
-<?php 
-
- #si hay envio de datos, los inserto en la base de datos 
- if($_POST){
+<?php if($_POST){#si hay envio de datos, los inserto en la base de datos  
 
     $nombre_proyecto = $_POST['nombre'];
     $descripcion = $_POST['descripcion'];
@@ -22,9 +17,10 @@
     $conexion = new conexion();
     $sql="INSERT INTO `proyectos` (`id`, `nombre`, `imagen`, `descripcion`) VALUES (NULL, '$nombre_proyecto' , '$imagen', '$descripcion')";
     $id_proyecto = $conexion->ejecutar($sql);
+     #para que no intente borrar muchas veces
+     header("Location:galeria.php");
+     die();
 
-    #para que no inserte muchas veces
-   # header("location:galeria.php");
  }
  #si nos envian por url, get 
  if($_GET){
@@ -42,33 +38,29 @@
         #borramos el registro de la base 
         $sql ="DELETE FROM `proyectos` WHERE `proyectos`.`id` =".$id; 
         $id_proyecto = $conexion->ejecutar($sql);
+         #para que no intente borrar muchas veces
+         header("Location:galeria.php");
+         die();
 
-        #para que no intente borrar muchas veces
-         header("location:galeria.php");
    }
 
    if(isset($_GET['modificar'])){
         $id = $_GET['modificar'];
-      
-        #pagina de modificacion por id
-        header("location:modificar.php?modificar=".$id);
+        header("Location:modificar.php?modificar=".$id);
+     
     }
-   
-    
- }
- #vamos a consultar para llenar la tabla 
- $conexion = new conexion();
- $proyectos= $conexion->consultar("SELECT * FROM `proyectos`");
- #comprobamos que la info este en forma de arreglo
- #print_r($resultado);
+ } 
+  #vamos a consultar para llenar la tabla 
+  $conexion = new conexion();
+  $proyectos= $conexion->consultar("SELECT * FROM `proyectos`");
+?> 
 
-?>
-   <br>
+<br>
 <!--ya tenemos un container en el header que cierra en el footer-->
 
     <div class="row d-flex justify-content-center mb-5">
         <div class="col-md-10 col-sm-12">
-            <div class="color card">
+            <div class="card" style="background-color:#CDB3A6;">
                 <div class="card-header">
                     Datos del Proyecto
                 </div>
@@ -101,7 +93,7 @@
             
         </div><!--cierra el col-->
     </div><!--cierra el row-->
-    <div class="tabla">
+    <div style="background-color:#CDB3A6;">
         <div class="row d-flex justify-content-center mb-5">
             <div class="col-md-10 col-sm-6">
                 <table class="table">
@@ -121,7 +113,7 @@
                         <tr >
                             <!--<td scope="row"><?php #echo $proyecto['id'];?></td> -->
                             <td><?php echo $proyecto['nombre'];?></td>
-                            <td> <img width="100" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">  </td>
+                            <td> <img width="200" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">  </td>
                             <td class="texto"><?php echo $proyecto['descripcion'];?></td>
                             <td><a name="eliminar" id="eliminar" class="btn btn-danger" href="?borrar=<?php echo $proyecto['id'];?>">Eliminar</a></td>
                             <td><a name="modificar" id="modificar" class="btn btn-warning" href="?modificar=<?php echo $proyecto['id'];?>">Modificar</a></td>

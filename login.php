@@ -1,7 +1,5 @@
-<?php
-    
-    #inicializamos variables de sesion 
-    session_start();
+<?php ob_start(); ?>
+<?php session_start();
     #validar datos
     if ($_POST){
       #conexion a la base
@@ -12,7 +10,7 @@
       select es_admin
       from usuarios where
       mail="" and contraseña = "";*/
-        if( ($_POST['email']=="administrador@gmail.com") && ($_POST['pass']=='987g.!543FF') ){
+        if( ($_POST['email']=="administrador") && ($_POST['pass']=='cac') ){
           $_SESSION['usuario']="Admin";
           $_SESSION['logueado']='S';
           #redirecciono porque ingreso ok 
@@ -26,65 +24,165 @@
           
            die();
         }
-    }
-
-?>
-<!doctype html>
+    }?>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <title>Login</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
 
-    <!-- Bootstrap CSS v5.0.2 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <style>
+       @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Dongle&family=Fjalla+One&family=Lato:ital@1&family=Montserrat:wght@300&family=Palette+Mosaic&family=Poppins:ital,wght@0,400;0,600;0,700;1,700&family=Roboto:wght@300&family=The+Nautigal:wght@700&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Montserrat, sans-serif;
+        }
 
-  </head>
-  <body>
-  <div class="container">
-      <div class="row">
-          <div class="col-md-4">
+        body{
+            height: 100vh;
+            width: 100%;
+        }
+        .container{
+            position:relative;
+            width: 100%;
+            height: 100%;
+            display:flex;   
+            justify-content: center;
+            align-items: center;
+            padding: 20px 100px;
+        }
+        .container::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: url("img/crud.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            filter:blur(50px);
+            z-index: -1;
+           
+            background-color: rgba(0,0,0,0.5);
+        }
+        .contact-box{
+            max-width: 850px;
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0px 0px 19px 5px rgba( 0, 0, 0, 0.19 );
 
-          </div> 
-          <div class="col-md-4">
-          <br>
-            <div class="card">
-                <H1> CRUD PORTFOLIO </H1>
-                <div class="card-header">
-                    Iniciar Sesión
-                </div>
-                <div class="card-body">
-                    <form action="login.php" method="post" >
-                        
-                        <label for="exampleInputEmail1" class="form-label">Dirección Email</label>
-                        <input type="email" name ="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">Nunca compartiremos su correo electrónico con nadie más.</div>
-                        
-                        
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" name="pass" class="form-control" id="exampleInputPassword1">
-                        
-                        <br>
-                        <button type="submit" class="btn btn-primary">Entrar al Portfolio</button>
-                        
-                        
-                    </form>
-                </div>
-             
-             </div>
-          
-        </div> 
-          <div class="col-md-4">
+        }
+        .left{
+            background: url("img/crud.jpg") no-repeat center;
+            background-size: cover;
+            height: 100%;
+        }
+        .right{
+            padding: 25px 40px;
 
-          </div> 
+        }
+        h2{
+            position: relative;
+            padding: 0 0 10px;
+            margin-bottom: 10px;
+        }
+        h2::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 50px;
+            border-radius: 2px;
+         
+            background-color:#9A3C0D ;
+   
+        }
+        .field{
+            width: 100%;
+            border: 2px solid rgba(0, 0, 0, 0.184);
+            outline:none;
+            background-color: #F9A67D;
+            padding: 0.5rem 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 22px;
+            transition: all 0.3s ease-in-out;
+        }
+        .field:hover{
+            background-color: rgba(0,0,0,0.1);
 
-      </div>
+        }
+        textarea{
+            min-height: 150px;
+        }
+        .btn{
+            width: 100%;
+            padding: 0.5rem 1rem;
+            background-color:#9A3C0D;
+            color: #fff;
+            font-size: 1.1rem;
+            border: none;
+            outline:none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn:hover{
+            background-color: #F9A67D;
+        }
+        .field:focus{
+            border: 2px solid #9A3C0D;
+            background-color: #fff;
+        }
+
+        @media screen and (max-width: 880px){
+         
+          .container{
+           
+            padding: 20px;  
+          }
+         
+            .contact-box{
+                grid-template-columns: 1fr;
+            }
+            .left{
+                background-size: cover;
+                height: 100%;
+            }
+            .right{
+                padding: 25px 20px;
+            }
+        }
+            
        
-      </div>
-      
-    <!-- Bootstrap JavaScript Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-  </body>
+   </style>
+     
+    
+</head>
+<body>
+    <div class="container">
+        <div class="contact-box">
+            <div class="left"></div>
+            <div class="right">
+                <h2>Crud PortFolio</h2>
+                <form action="login.php" method="post">
+                    <input type="text" name="email" id="email" class="field" placeholder="Usuario" required>
+                    <input type="password" name="pass" id="subject" class="field" placeholder="Password" required>
+                   
+                    <input type="submit" value="Enviar" class="btn">
+                  
+                </form>
+        </div>
+    </div>
+    
+</body>
 </html>
