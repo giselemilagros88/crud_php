@@ -1,4 +1,12 @@
 <?php include 'header.php'; ?>
+<?php 
+  include 'api-google/vendor/autoload.php';
+  putenv('GOOGLE_APPLICATION_CREDENTIALS=cargar-archivos-356516-098024b3d335.json');
+  $client = new Google_Client();
+  $client->useApplicationDefaultCredentials();
+  $client->SetScopes(['https://www.googleapis.com/auth/drive.file']);
+
+ ?>
 <?php if($_POST){#si hay envio de datos, los inserto en la base de datos  
 
     $nombre_proyecto = $_POST['nombre'];
@@ -11,6 +19,32 @@
     $fecha = new DateTime();
     $imagen= $fecha->getTimestamp()."_".$imagen;
     move_uploaded_file($imagen_temporal,"imagenes/".$imagen);
+
+    try{
+        $service = new Google_Service_Drive($client);
+        $file_path = $imagen;
+        $file = new Google_Service_Drive_DriveFile();
+        $file->setName($imagen);
+        $file->setParents(array("1LAzAw7LAbN-ePTGstC1lVIR9-qFIeDeT"));
+        $file->setDescription($imagen."_cargado desde la web");
+        $file->setMimeType('image/jpg');
+        $resultado = $service->files->create(
+            $file,
+            array(
+                'data' => file_get_contents($file_path),
+                'mimeType' => 'image/jpg',
+                'uploadType' => 'media'
+            )
+       
+        );
+        #echo '<a href="www.google.com/drive/folders/'.$resultado->id.'">'.$resultado->id.'</a>';
+    }
+    catch(Google_Service_Exception $gs){
+        $mensaje = json_decode($gs->getMessage());
+        echo $mensaje->error->message();
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }
    
     #creo una instancia(objeto) de la clase de conexion
     $conexion = new conexion();

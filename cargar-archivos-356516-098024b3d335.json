@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "cargar-archivos-356516",
+  "private_key_id": "098024b3d335469b753386f650ffbcdfbb5fcc68",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCO3ZBhr0KSkOoH\nfwMzJ0WYADEDz9aUuBxHd+g4yKbLu7adEm6EkwS+U5t2TG2njnPG2RN2t46GFCES\n5X9z9j5fvrPUVbArWj4agJI/QtPaCe3jBsaYa1YsKLeJ878AteeMOtkalNes4iyy\n6Zdlh2df95h1ZaYyPhRZfk2fHqNuoW7kmLJL2zzW90rIjo12bNF1NKw0d1HnhQbU\na+hIMxwlj/d74mHwKah5QAcr5CcwSS3EvH/exrao4xkHVv4YsT7BtMG8k5+MXffr\ntSTRFxHXljTfUKxYmnQq0eARINdFGvbOcGTE4GyMktcfn1beXLNdDlCUykS9/KKS\nl8Fjp4FlAgMBAAECggEADwAmHQ+jKJMFM6jLK/eTZ9ibTOhpgj+LnphxPmcZFlq9\nG6R4DL0IGjjaobL4L4f2UZpw3/35fcwGxf5pYcJo/bIfHSwrHX4x96Po1zIb3vC8\ndOI8/3uDtorG7Ln2Y+t1psR2D8OxmqI76cQ7pIoxWUL809TKvMtGZTgtC8hShjbO\nalTfLMIZ0DtIVeDdCtZNwBy3fX+rxMV63Y5HODdtK7uAA1mSch/Ky7Akci3bMgaD\nnovv3Yq+Pq6ZbJuq2moq8062537Jj7VjxSaQ/vtDFb03iUWSi1Wk+06/jVz6SDD5\nVmtcrD4bcjm4OYLeO6ZqfIfFoRN6rfTTpBbV5woL6QKBgQDEfYzFDuVv/WvBaUcE\nvn1Txfkuf+4h192QqJCY3M++4uiithqNuVo3nAB8FACQsowECgZNrGGW4b1lS/hz\ngOx+DBWxMH/M5ROkWXBqOJ5mWZLQJhKJruU6N/BHTHUrtle4YnvqfrqB/qWQLx+Y\nMGiqh7I3kVEtG/ILwI/+8GjlbQKBgQC6IlKjoyn0m2BEfresveAC7bS69eKthQJ2\nlqjrHyLXNrSMKdfL5FxSEhGfANlyDkDyl8klDkuS7C3Mic2EnAcIvAhbynMddWmw\nYYLl701C6BNmHn6kZEMpMNfDC3dGNi7lymVA80dAgf9NuGdGa+6Kw+u2UiSfrP9N\nySFm1/Qo2QKBgBV+amSwAXcjsKLiokspj0oXsO9ePS1kkK8fUVn3ZZ5K8gnCg9sW\n+IB2xzLLeVhav6g9dH0Qq0g2/2HSUqZH5xbOuZy9Ym2GbYSf6AUmlmU5zS6Jy6NW\nB2s77UPPYE3cz3GzDD0Vic9ojLHeBcW/HePxnhQoCEo38V1Jvja0E7VtAoGBAK38\nn1quje1Dv7zG5lHmOpsCL0oDxZuFFURcmBEPzbV2QVYzVrAUCef9U9NZK+jdQgCB\nuVeWATaY5kanGSC36CtV+Eo09121/tEMlRrxkTrVTCzMnHx17AF40nZTJW7P/w51\nHiiUPyohWdAAayj8gsHbWV3Xcrx/LTY8p6hGfMghAoGABCfFoayC+6o8hvWzSVBn\n992iZAaHWc0hIsf116w+sil5q2s48mb69ODZ2jy6WzbTydHm0lwBsPp4nO0QyBG1\nyx+B0Qs6VBluB4steDGK0eO7Q2U1sVas/lJbcwyLrB1pyhu/lqeFgW/NZsKKT6IY\nehSbvZRntxSmn/YuUV3/aqo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "cargar-archivos@cargar-archivos-356516.iam.gserviceaccount.com",
+  "client_id": "115508642873334812316",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cargar-archivos%40cargar-archivos-356516.iam.gserviceaccount.com"
+}

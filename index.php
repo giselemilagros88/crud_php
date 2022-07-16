@@ -1,4 +1,5 @@
 <?php include 'conexion.php'; ?>
+
 <?php $conexion = new conexion();
  /*$sql = "SELECT * FROM `proyectos`";
  $datos = $conexion->consultar($sql);*/
