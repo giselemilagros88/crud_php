@@ -1,18 +1,16 @@
-<?php
-
-class conexion{
+<?php class conexion{
     #atributos que son propios del objeto
-    private $servidor ="us-cdbr-east-06.cleardb.net";
-    private $usuario ="b2dfee26219027";
-    private $pass = "6d7377de";
+    private $servidor ="localhost";
+    private $usuario ="root";
+    private $pass = "";
     private $conexion;#objeto de tipo pdo, de la clase propia de php
+    private $base = "proyecto";
    
     public function __construct(){
-        #condicional de errores, manejo de excepciones
         try{
-            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=heroku_5dc9c85290fdc82",$this->usuario,$this->pass);
-            #ACTIVAMOS LOS ERRORES Y LAS EXCEPTIONs
-            $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION); #accedemos a un metodo de la clase pdo, que nos permite activar los errores y las excepciones(:: constante estatica)
+            $this->conexion = new PDO("mysql:host=$this->servidor;dbname=$this->base",$this->usuario,$this->pass);
+            #ACTIVAMOS LOS ERRORES Y LAS EXCEPTIONES
+            $this->conexion->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
         }catch(PDOException $e){
             return "Falla de Conexión".$e;
@@ -32,9 +30,10 @@ class conexion{
         $sentencia->execute();
         #retorna todos los registros de la consulta sql
         return $sentencia->fetchAll();
+        /*1ro agarra nuestra sentencia de sql y lo mete adentro de un objeto 
+         2do agarra el objeto y ejecuta la sentencia de sql que devuelve o no filas de base de datos 
+         3ro fetchall() nos devuelve un array con las filas del select  */
     }
 
 
-}
-
-?>
+} ?>
