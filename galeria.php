@@ -94,7 +94,7 @@
     <div style="background-color:#CDB3A6;">
         <div class="row d-flex justify-content-center mb-5">
             <div class="col-md-10 col-sm-6">
-                <table class="table">
+                <table class="table tabla__galeria" style="background-color:#CDB3A6;">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -121,7 +121,26 @@
                         } ?>
                     </tbody>
                 </table>
+                <h2 class="card-title text-dark">Listado de proyectos ingresados: </h2>
+                <?php #leemos proyectos 1 por 1
+                 foreach($proyectos as $proyecto){ ?>
+                    <div class="col card__mobile  mb-4">
+                        <div class="card border border-3 shadow w-100">
+                            <h3 class="card-title text-dark"><?php echo $proyecto['nombre'];?></h3>
+                            <a>
+                                <img class="card-img-top" width="200" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">
+                            </a>
+                            <div class="card-body">
+                               
+                                <p class="card-text text-dark"><?php echo $proyecto['descripcion'];?></p>
+                                <a name="eliminar" id="eliminar" class="btn btn-danger" href="?borrar=<?php echo $proyecto['id'];?>">Eliminar</a>
+                                <a name="modificar" id="modificar" class="btn btn-warning" href="?modificar=<?php echo $proyecto['id'];?>">Modificar</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div><!--cierra el col-->  
+            
         </div>
     </div>
    

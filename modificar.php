@@ -58,7 +58,7 @@ if($_POST){
                                     <label for="archivo">Imagen del Proyecto - Se actualizara al grabar los cambios</label>
                                     <br>
                                     <div class="d-flex justify-content-center align-item-center">
-                                        <img src="imagenes/<?php echo $fila['imagen']; ?>" width="400">
+                                        <img class="img__modificar" src="imagenes/<?php echo $fila['imagen']; ?>">
                                     </div>
                                 </div>
                                 <p>Seleccione un nueva Imagen si desea modificar</p>

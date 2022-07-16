@@ -1,4 +1,4 @@
-<?php ob_start();
+<?php ob_start(); #esto evita los errores de envios de headers
 set_error_handler("var_dump");
 include 'conexion.php';
 session_start(); #inicializamos variables de sesion
@@ -42,6 +42,12 @@ session_start(); #inicializamos variables de sesion
                 background-color: rgb(189, 189, 189)!important;
                 
             }
+            .img__modificar{
+                width: 400px!important;
+            }
+            .card__mobile{
+                display:none!important;
+            }
 
 
             @media screen and (max-width: 800px) {
@@ -49,11 +55,20 @@ session_start(); #inicializamos variables de sesion
                 .tabla{
                     width: 80%!important;
                     font-size: 0.8em!important;
-                    background-color: white!important;
+                    
                 }
                 .texto{
                     text-overflow: clip!important;
                     
+                }
+                .img__modificar{
+                    width: 300px!important;
+                 }
+                .tabla__galeria{
+                    display:none!important;
+                }
+                .card__mobile{
+                     display:block!important;
                 }
             }
                     
