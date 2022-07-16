@@ -1,4 +1,7 @@
-<?php session_start(); #inicializamos variables de sesion
+<?php ob_start();
+set_error_handler("var_dump");
+include 'conexion.php';
+session_start(); #inicializamos variables de sesion
  #si esta logueado lo dejo trabajar y sino lo mando al login de nuevo 
  if ( isset( $_SESSION['usuario'] )!='Admin'){
     header("location:login.php");

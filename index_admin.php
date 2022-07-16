@@ -1,5 +1,4 @@
-<?php include 'header.php'; ?>
-<?php include 'conexion.php'; ?>
+<?php include 'header.php';?>
 <?php $conexion = new conexion();# es un objeto de tipo conexion,
       $proyectos= $conexion->consultar("SELECT * FROM `proyectos`"); ?>
 

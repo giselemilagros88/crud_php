@@ -1,5 +1,4 @@
 <?php include 'header.php'; ?>
-<?php include 'conexion.php'; ?>
 <?php if($_POST){#si hay envio de datos, los inserto en la base de datos  
 
     $nombre_proyecto = $_POST['nombre'];
@@ -41,13 +40,12 @@
          #para que no intente borrar muchas veces
          header("Location:galeria.php");
          die();
-
-   }
+ }
 
    if(isset($_GET['modificar'])){
         $id = $_GET['modificar'];
         header("Location:modificar.php?modificar=".$id);
-     
+        die();
     }
  } 
   #vamos a consultar para llenar la tabla 

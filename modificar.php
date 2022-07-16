@@ -1,5 +1,4 @@
-<?php include 'header.php'; ?>
-<?php include 'conexion.php'; 
+<?php include 'header.php'; 
 if($_GET){
     if(isset($_GET['modificar'])){
         $id = $_GET['modificar'];
