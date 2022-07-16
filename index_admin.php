@@ -1,4 +1,3 @@
-<?php ob_start(); ?>
 <?php include 'header.php'; ?>
 <?php include 'conexion.php'; ?>
 <?php $conexion = new conexion();# es un objeto de tipo conexion,

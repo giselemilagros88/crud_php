@@ -1,5 +1,3 @@
-<?php ob_start(); ?>
-<?php set_error_handler("var_dump"); ?>
 <?php session_start(); #inicializamos variables de sesion
  #si esta logueado lo dejo trabajar y sino lo mando al login de nuevo 
  if ( isset( $_SESSION['usuario'] )!='Admin'){
