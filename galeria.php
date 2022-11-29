@@ -19,7 +19,7 @@
     $fecha = new DateTime();
     $imagen= $fecha->getTimestamp()."_".$imagen;
     move_uploaded_file($imagen_temporal,"imagenes/".$imagen);
-
+    /*
     try{
         $service = new Google_Service_Drive($client);
         $file_path = $imagen;
@@ -44,7 +44,7 @@
         echo $mensaje->error->message();
     }catch(Exception $e){
         echo $e->getMessage();
-    }
+    }*/
    
     #creo una instancia(objeto) de la clase de conexion
     $conexion = new conexion();
@@ -155,7 +155,7 @@
                         } ?>
                     </tbody>
                 </table>
-                <h2 class="card-title text-dark">Listado de proyectos ingresados: </h2>
+                <h2 class="card-title text-dark card__mobile">Listado de proyectos ingresados: </h2>
                 <?php #leemos proyectos 1 por 1
                  foreach($proyectos as $proyecto){ ?>
                     <div class="col card__mobile  mb-4">
