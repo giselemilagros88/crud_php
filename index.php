@@ -1,9 +1,9 @@
 <?php include 'conexion.php'; ?>
-
 <?php $conexion = new conexion();
  /*$sql = "SELECT * FROM `proyectos`";
  $datos = $conexion->consultar($sql);*/
- $proyectos= $conexion->consultar("SELECT * FROM `proyectos`");?>
+ $proyectos= $conexion->consultar("SELECT * FROM `proyectos`");
+ ?>
    <!DOCTYPE html>
    <html lang="es">
    <head>
@@ -32,7 +32,7 @@
         </style>
    </head>
    <body>
-        <canvas style="position: absolute;top:0;left:0;z-index: -1;" id="canvas" width="1300" height="2100"></canvas>
+        <canvas style="position:absolute; top:0; left:0; z-index:-1; width:100%; height:200vh;" id="canvas" width="100%" height="200vh"></canvas>
         
         <div class="container">
             
@@ -46,34 +46,45 @@
             
                 </div>
         </div>
-        <div class="container bg-dark">
+        <div class="container bg-dark pb-5">
         
             <h2 class="text-white ">Mi portfolio</h2>
 
             <div class ="row row-cols-1 row-cols-md-3 g-4">
                 <?php #leemos proyectos 1 por 1
-                foreach($proyectos as $proyecto){ ?>
+                foreach($proyectos as $proyecto){ 
+                ?>
                     <div class="col">
                         <div class="card border border-3 shadow w-100">
                             <a>
                                 <img class="card-img-top" width="100" src="imagenes/<?php echo $proyecto['imagen'];?>" alt="">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title text-dark"><?php echo $proyecto['nombre'];?></h5>
-                                <p class="card-text text-dark"><?php echo $proyecto['descripcion'];?></p>
+                                <h5 class="card-title text-dark">
+                                    <?php echo $proyecto['nombre'];?>
+                                </h5>
+                                <p class="card-text text-dark">
+                                    <?php echo $proyecto['descripcion'];?>
+                                </p>
+                                <!-- 
+                                 <a href="<?php #echo $proyecto['url'];?>">Ingresa a la pagina</a>
+                                 <a href="<?php #echo $proyecto['url_github'];?>">Ingresa al GitHub</a>
+                               -->
                             </div>
                         </div>
                     </div>
-                <?php } ?>
+                <?php 
+                 } 
+                ?>
             </div>
         </div>
 
-    <div id="contact" class="container text-center">
+    <div id="contact" class="container text-center mt-5">
         <header>
             <h2>Contactame</h2>
         </header>
     
-        <div class="container d-flex justify-content-center">
+        <div class="container d-flex justify-content-center mb-5">
             <div class="border-3 col-8"  >
                 <form action="enviar.php" method='post' >
                         <div class="mb-3">

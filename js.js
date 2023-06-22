@@ -3,7 +3,7 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 let width, height;
 let forces = [], particles = [];
-let nParticles = 250;
+let nParticles = 300;
 let p = 0;
 
 noise.seed(Math.random());
@@ -29,14 +29,14 @@ class V2 {
 
 class Particle {
   constructor(x,y) {
-    this.position = new V2(-100,-100);
+    this.position = new V2(-200,-200);
     this.velocity = new V2();
     this.acceleration = new V2();
     this.alpha = 0;
     this.color = '#000000';
-    this.points = [new V2(-10 + Math.random()*20, -10 + Math.random()*20),
-                   new V2(-10 + Math.random()*20, -10 + Math.random()*20),
-                   new V2(-10 + Math.random()*20, -10 + Math.random()*20)];
+    this.points = [new V2(-10 + Math.random()*30, -10 + Math.random()*30),
+                   new V2(-10 + Math.random()*30, -10 + Math.random()*30),
+                   new V2(-10 + Math.random()*30, -10 + Math.random()*30)];
   }
   
   update() {
@@ -48,9 +48,9 @@ class Particle {
   }
   
   follow() {
-    var x = Math.floor(this.position.x / 20);
-    var y = Math.floor(this.position.y / 20);
-    var index = x * Math.floor(height/20) + y;
+    var x = Math.floor(this.position.x / 30);
+    var y = Math.floor(this.position.y / 30);
+    var index = x * Math.floor(height/30) + y;
     var force = forces[index];
     if (force) this.applyForce(force);
   }
@@ -81,8 +81,8 @@ const resize = () => {
 
 const initForces = () => {
   var i = 0;
-  for (var x = 0; x < width; x+=20) {
-    for (var y = 0; y < height; y+=20) {
+  for (var x = 0; x < width; x+=30) {
+    for (var y = 0; y < height; y+=30) {
       if (!forces[i]) forces[i] = new V2();
       i++;
     }
@@ -96,11 +96,11 @@ const initForces = () => {
 const updateForces = (t) => {
   var i = 0;
   var xOff = 0, yOff = 0;
-  for (var x = 0; x < width; x+=20) {
+  for (var x = 0; x < width; x+=30) {
     xOff += 0.1;
-    for (var y = 0; y < height; y+=20) {
+    for (var y = 0; y < height; y+=30) {
       yOff += 0.1;
-      let a = noise.perlin3(xOff, yOff, t*0.00005) * Math.PI * 4;
+      let a = noise.perlin3(xOff, yOff, t*0.00003) * Math.PI * 4;
       if (forces[i]) forces[i].reset(Math.cos(a)*0.1, Math.sin(a)*0.1);
       i++;
     }
@@ -110,7 +110,7 @@ const updateForces = (t) => {
 const initParticles = () => {
   for (var i = 0; i < nParticles; i++) {
     particles.push(new Particle(Math.random()*width, Math.random()*height));
-    particles[i].velocity.y = 0.5;
+    particles[i].velocity.y = 0.8;
   }
 }
 

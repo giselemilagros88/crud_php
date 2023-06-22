@@ -13,7 +13,7 @@
        
     </div>
 </div>
-<div class ="container" style="background-color:#CDB3A6;">
+<div class ="container bg-secondary pb-5">
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <?php #leemos proyectos 1 por 1
         foreach($proyectos as $proyecto){ ?>

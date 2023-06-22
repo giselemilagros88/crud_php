@@ -7,9 +7,10 @@
       #contraseña
       #es_admin s o n 
       /*
-      select es_admin
+      select mail, pass
       from usuarios where
-      mail="" and contraseña = "";*/
+      es_admin = 'S';*/
+      /* USUARIOS["mail"] */
         if( ($_POST['email']=="administrador") && ($_POST['pass']=='cac') ){
           $_SESSION['usuario']="Admin";
           $_SESSION['logueado']='S';
@@ -181,6 +182,8 @@
                     <input type="submit" value="Enviar" class="btn">
                   
                 </form>
+                <p>usuario : </p>
+                <p>contraseña: </p>
         </div>
     </div>
     
